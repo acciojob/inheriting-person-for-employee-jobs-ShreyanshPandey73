@@ -1,29 +1,31 @@
-// complete this js code
-function Person(name, age) {
-	 this.name = name;
-  this.age = age;
+class Person {
+  constructor(name, age) {
+    this.name1 = name;
+    this.age1 = age;
+  }
+
+  get name() {
+    return this.name1;
+  }
+
+  set age(age) {
+    this.age = age1;
+  }
 }
-Person.prototype.greet = function() {
-  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
-};
 
-function Employee(name, age, jobTitle) {
-	 Person.call(this, name, age);
-  this.jobTitle = jobTitle;
+class Student extends Person {
+  study() {
+    console.log(`${this.name1} is studying`);
+  }
 }
-Employee.prototype = Object.create(Person.prototype);
 
-// Adding jobGreet method to Employee prototype
-Employee.prototype.jobGreet = function() {
-  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
-};
-const person1 = new Person("John", 25);
-person1.greet(); // Output: Hello, my name is John, I am 25 years old.
+class Teacher extends Person {
+  teach() {
+    console.log(`${this.name1} is teaching`);
+  }
+}
 
-const employee1 = new Employee("Alice", 30, "Manager");
-employee1.greet(); // Output: Hello, my name is Alice, I am 30 years old.
-employee1.jobGreet(); 
-
-// Do not change code below this line
+// Do not change the code below this line
 window.Person = Person;
-window.Employee = Employee;
+window.Student = Student;
+window.Teacher = Teacher;
