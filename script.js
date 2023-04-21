@@ -1,31 +1,25 @@
-class Person {
-	constructor(name,age){
-		this._name = name;
-		this._age = age;
-	}
+// complete this js code
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+Person.prototype.greet = function() {
+  console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+};
 
-	get name(){
-		return this._name;
-	}
 
-	set age(age){
-		this._age = age;
-	}
+function Employee(name, age, jobTitle) {
+  Person.call(this, name, age);
+  this.jobTitle = jobTitle;
 }
 
-class Student extends Person {
-	study(){
-		console.log(this._name + " is studying");
-	}
-}
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
 
-class Teacher extends Person {
-	teach(){
-		console.log(this._name + " is teaching");
-	}
-}
+Employee.prototype.jobGreet = function() {
+  console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+};
 
-// Do not change the code below this line
+// Do not change code below this line
 window.Person = Person;
-window.Student = Student;
-window.Teacher = Teacher;
+window.Employee = Employee;
